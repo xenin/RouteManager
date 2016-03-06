@@ -1,0 +1,15 @@
+{
+    "name": "xenin/RouteManager",
+    "description": "Easily manage REST API Routes",
+    "authors": [
+        {
+            "name": "xenin",
+            "email": "xenin@xenin.net"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "xenin\\RouteManager\\" : "src/"
+        }
+    }
+}
