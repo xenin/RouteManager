@@ -4,6 +4,7 @@
     "description": "Simple REST API Route Manager",
     "keywords":["rest", "restful", "api", "php", "library"],
     "homepage": "https://github.com/xenin/RouteManager",
+    "license": "GPL-3.0",
     "authors": [
         {
             "name": "xenin",
