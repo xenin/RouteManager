@@ -78,7 +78,7 @@ class RouteManager {
     		
     		for($i = 0; $i < count($keys); $i++) {
     			$key = '{' . $keys[$i] . '}';
-    			$route = str_replace('{' . $keys[$i] . '}', $values[$keys[$i]], $route);
+    			$route = str_replace('{' . $keys[$i] . '}', urlencode($values[$keys[$i]]), $route);
     		}
     		
     		$check = $this->getRouteKeys($route);
@@ -87,7 +87,7 @@ class RouteManager {
                 if (strncmp($route, $this->opt["base"], strlen($this->opt["base"])) !== 0) {
                     $route = rtrim($this->opt["base"], '/') . '/' . ltrim($route, '/');
                 }
-    			return urlencode($route);
+    			return $route;
     		} else {
     			return null;
     		}
