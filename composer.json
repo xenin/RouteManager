@@ -1,5 +1,5 @@
 {
-    "name": "xenin/RouteManager",
+    "name": "xenin/route-manager",
     "type": "library",
     "description": "Simple REST API Route Manager",
     "keywords":["rest", "restful", "api", "php", "library"],
