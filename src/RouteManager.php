@@ -13,15 +13,13 @@ namespace xenin;
  */
 
 class RouteManager {
-	
-	protected $opt = array(
-		"base" => null,
-		"routes" => array()
-	);
+
+    protected $baseUrl = null;
+	protected $routes = array();
 	
 	public function __construct($url = null) {
 		if($url !== null) {
-            $this->opt["base"] = $url;
+            $this->baseUrl = $url;
         }
 	}
 	
@@ -36,7 +34,7 @@ class RouteManager {
      */
     public function base($url = null) {
         if($url !== null) {
-            $this->opt["base"] = $url;
+            $this->baseUrl = $url;
         }
     }
     
@@ -48,7 +46,7 @@ class RouteManager {
      */
     public function add($name = null, $route = null) {
     	if($name !== null && $route !== null) {
-    		$this->opt["routes"][$name] = $route;
+    		$this->routes[$name] = $route;
     	}
     }
     
@@ -61,7 +59,7 @@ class RouteManager {
      * @return string|null      Complete url from pattern
      */
     public function get($name = null, $values = array()) {
-        if($this->opt["base"] === null) {
+        if($this->baseUrl === null) {
             return null;
         }
     	if($name === null || count($values) === 0) {
@@ -69,7 +67,7 @@ class RouteManager {
         } else {
     		$all = true;
     		$keys = array_keys($values);
-    		$route = $this->opt["routes"][$name];
+    		$route = $this->routes[$name];
     		$arr = $this->getRouteKeys($route);
     		
     		if(count($values) != count($arr[0])) {
@@ -84,8 +82,8 @@ class RouteManager {
     		$check = $this->getRouteKeys($route);
     		
     		if(count($check[0]) === 0) {
-                if (strncmp($route, $this->opt["base"], strlen($this->opt["base"])) !== 0) {
-                    $route = rtrim($this->opt["base"], '/') . '/' . ltrim($route, '/');
+                if (strncmp($route, $this->baseUrl, strlen($this->baseUrl)) !== 0) {
+                    $route = rtrim($this->baseUrl, '/') . '/' . ltrim($route, '/');
                 }
     			return $route;
     		} else {
