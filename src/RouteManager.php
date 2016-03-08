@@ -106,7 +106,7 @@ class RouteManager {
     		
     		for($i = 0; $i < count($keys); $i++) {
     			$key = '{' . $keys[$i] . '}';
-    			$route = str_replace('{' . $keys[$i] . '}', urlencode($values[$keys[$i]]), $route);
+    			$route = str_replace('{' . $keys[$i] . '}', rawurlencode($values[$keys[$i]]), $route);
     		}
     		
     		$check = $this->getRouteKeys($route);
