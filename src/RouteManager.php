@@ -82,6 +82,16 @@ class RouteManager {
         if($this->baseUrl === null) {
             return null;
         }
+        if($name !== null && count($values) === 0) {
+            $route = $this->routes[$name];
+            $arr = $this->getRouteKeys($route);
+            if(count($arr[0]) === 0) {
+                if (strncmp($route, $this->baseUrl, strlen($this->baseUrl)) !== 0) {
+                    $route = rtrim($this->baseUrl, '/') . '/' . ltrim($route, '/');
+                }
+                return $route;
+            }
+        }
     	if($name === null || count($values) === 0) {
             return null;
         } else {
